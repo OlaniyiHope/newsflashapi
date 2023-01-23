@@ -1,15 +1,11 @@
 {
-  "name": "hybridhome",
+  "name": "newsflashapi",
   "version": "1.0.0",
   "description": "",
   "main": "./api/index.js",
   "type": "module",
   "scripts": {
     "start": "nodemon index.js"
-  },
-  "engines": {
-    "node": "16.17.1",
-    "npm": "8.15.0"
   },
   "keywords": [],
   "author": "hope olaniyi",
