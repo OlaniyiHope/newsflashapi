@@ -10,7 +10,7 @@ export const createCategory = async (req, res, next) => {
   }
 };
 
-//GET POST
+//GET CATEGORY
 export const getCategory = async (req, res) => {
   try {
     const cats = await Category.find();
@@ -23,6 +23,14 @@ export const getsingleCategory = async (req, res, next) => {
   try {
     const categories = await Category.findById(req.params.id);
     res.status(200).json(categories);
+  } catch (err) {
+    next(err);
+  }
+};
+export const deleteCategory = async (req, res, next) => {
+  try {
+    await Category.findByIdAndDelete(req.params.id);
+    res.status(200).json("Category has been deleted.");
   } catch (err) {
     next(err);
   }
