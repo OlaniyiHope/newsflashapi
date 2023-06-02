@@ -24,12 +24,15 @@ const connect = async () => {
 mongoose.connection.on("disconnected", () => {
   console.log("mongoDB has disconnected!");
 });
+// header('Access-Control-Allow-Origin: *');
+// header('Access-Control-Allow-Methods: POST, GET, OPTIONS, PUT, DELETE');
+// header('Access-Control-Allow-Headers: Content-Type, X-Auth-Token, Origin, Authorization');
 
 //middlewares
-app.use(cors());
+
 app.use(cookieParser());
 app.use(express.json());
-
+app.use(cors());
 app.use("/api/auth", authRoute);
 app.use("/api/users", usersRoute);
 app.use("/api/properties", propertiesRoute);
