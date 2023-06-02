@@ -17,7 +17,7 @@ const connect = async () => {
     await mongoose.connect(process.env.MONGO);
     console.log("Connected to mongoDB.");
   } catch (error) {
-    console.log("Connected to vercel.");
+    console.log("Connected to vercel app.");
   }
 };
 
