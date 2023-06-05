@@ -32,13 +32,13 @@ mongoose.connection.on("disconnected", () => {
 
 app.use(cookieParser());
 app.use(express.json());
-app.use(cors(
-  {
-    origin: "https://newsflashapi.vercel.app",
-    methods: ['GET','POST','DELETE','UPDATE','PUT','PATCH'],
-    allowedHeaders: ['Content-Type, X-Auth-Token, Origin, Authorization']
-  }
-));
+app.use(function (req, res, next) {
+  res.setHeader('Access-Control-Allow-Origin', 'http://localhost:5000');
+  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
+  res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
+  res.setHeader('Access-Control-Allow-Credentials', true);
+  next();
+  });
 app.use("/api/auth", authRoute);
 app.use("/api/users", usersRoute);
 app.use("/api/properties", propertiesRoute);
