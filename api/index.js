@@ -24,14 +24,6 @@ const connect = async () => {
 mongoose.connection.on("disconnected", () => {
   console.log("mongoDB has disconnected!");
 });
-// header('Access-Control-Allow-Origin: *');
-// header('Access-Control-Allow-Methods: POST, GET, OPTIONS, PUT, DELETE');
-// header('Access-Control-Allow-Headers: Content-Type, X-Auth-Token, Origin, Authorization');
-
-//middlewares
-
-app.use(cookieParser());
-app.use(express.json());
 app.use(function (req, res, next) {
   res.setHeader('Access-Control-Allow-Origin', 'https://newsflashapi.vercel.app');
   res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
@@ -39,6 +31,12 @@ app.use(function (req, res, next) {
   res.setHeader('Access-Control-Allow-Credentials', true);
   next();
   });
+
+//middlewares
+
+app.use(cookieParser());
+app.use(express.json());
+app.use(cors());
 app.use("/api/auth", authRoute);
 app.use("/api/users", usersRoute);
 app.use("/api/properties", propertiesRoute);
